@@ -1,13 +1,35 @@
-# Sample Hardhat Project
+## Run the code
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+- You need to setup a `.env` file with the network variables to be used in hardhat.config
 
-Try running some of the following tasks:
+### Install
 
 ```shell
-npx hardhat help
+npm install
+```
+
+### Compile
+
+```shell
+npx hardhat compile
+```
+
+### Test
+
+```shell
 npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.js
+```
+
+### Deploy
+
+#### Deploy Contracts for the GitfCard Approach
+
+```shell
+npx hardhat run --network testnet_aurora scripts/deployProject.js
+```
+
+#### Deploy Contracts for the GitfCardExtended Approach
+
+```shell
+npx hardhat run --network testnet_aurora ./scripts/deployProjectExtended.js
 ```
