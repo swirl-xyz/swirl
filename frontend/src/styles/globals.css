@@ -25,3 +25,8 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.first-card {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
