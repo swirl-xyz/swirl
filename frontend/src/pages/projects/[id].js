@@ -1,14 +1,30 @@
-import { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useWallets } from '@privy-io/react-auth';
 
+import useWeb3Provider from '../../hooks/useWeb3Provider';
 import proposalsClient from '../../clients/proposals';
 
 export default function Project() {
   const router = useRouter();
+  const { wallets } = useWallets();
+  const { web3Provider } = useWeb3Provider();
 
-  useEffect(() => {
-    proposalsClient.get('0x0cb5e1a954fc2cd83d2b4b382b17f7d621f1e47c7e8c2e8fcc5df38d6a3fa74e');
-  }, []);
+  const vote = (choice) => {
+    const userWallet = wallets[0];
+
+    const choiceId = {
+      yes: 1,
+      no: 2,
+      abstain: 3,
+    }[choice];
+
+    proposalsClient.vote({
+      web3Provider,
+      userWalletAddress: userWallet.address,
+      proposalId: '0x6c2447dbd53ada4c31ced0391b883bf890e7eb355b2d9b274de5b1c715adef78',
+      choiceId,
+    });
+  };
 
   return (
     <main
@@ -21,6 +37,9 @@ export default function Project() {
           {router.query.id}
         </h1>
       </div>
+      <button type="button" onClick={() => vote('yes')}>Vote yes</button>
+      <button type="button" onClick={() => vote('no')}>Vote No</button>
+      <button type="button" onClick={() => vote('abstain')}>Abstain</button>
     </main>
   );
 }
