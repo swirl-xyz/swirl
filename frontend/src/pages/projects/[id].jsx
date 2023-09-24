@@ -1,11 +1,19 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import ActivityFeed from "@/components/activityFeed";
+import Modal from "@/components/modal";
 
 export default function Project() {
   const router = useRouter();
 
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOpenModal = () => setModalOpen(true);
+  const handleCloseModal = () => setModalOpen(false);
+
   return (
     <main className={`flex min-h-screen flex-col`}>
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
       <section class='relative py-22 bg-white'>
         <div class='mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col lg:flex-row gap-10 lg:gap-12'>
           <div class='absolute w-full lg:w-1/2 inset-y-0 lg:right-0 hidden lg:block'>
@@ -23,7 +31,7 @@ export default function Project() {
             >
               Whale Research with Drones
             </h1>
-            <div>Researchers:</div>
+            <div class='pt-5 opacity-50'>Researchers:</div>
             <div className='flex items-center gap-2'>
               <img
                 src='/art4.png'
@@ -105,9 +113,12 @@ export default function Project() {
                     placeholder='Minimum donation 0.00001'
                     className='w-full py-3 outline-none bg-transparent'
                   />
-                  <button className='flex text-white justify-center items-center w-max min-w-max sm:w-max px-6 h-12 rounded-full outline-none relative overflow-hidden border duration-300 ease-linear after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554] hover:after:opacity-100 hover:after:scale-[2.5] bg-blue-600 border-transparent hover:border-[#172554]'>
+                  <button
+                    onClick={handleOpenModal}
+                    className='flex text-white justify-center items-center w-max min-w-max sm:w-max px-6 h-12 rounded-full outline-none relative overflow-hidden border duration-300 ease-linear after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554] hover:after:opacity-100 hover:after:scale-[2.5] bg-blue-600 border-transparent hover:border-[#172554]'
+                  >
                     <span className='hidden sm:flex relative z-[5]'>
-                      Fund with ETH
+                      Donate with ETH
                     </span>
                     <span className='flex sm:hidden relative z-[5]'></span>
                   </button>

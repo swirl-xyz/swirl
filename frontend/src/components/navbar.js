@@ -8,7 +8,7 @@ export default function Navbar() {
     <div className='p-4 bg-white'>
       <div className='z-10 w-full items-center justify-between font-mono text-sm flex mx-auto'>
         <div className='flex items-center'>
-          <img src='./logo.svg' alt='logo' className='mr-2 h-10' />
+          <img src='/logo.svg' alt='logo' className='mr-2 h-10' />
         </div>
         <div className='flex items-center'>
           {ready && authenticated ? (

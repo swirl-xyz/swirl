@@ -11,13 +11,13 @@ export default function ActivityFeed() {
     console.log(title, description, category);
   };
   return (
-    <section class='bg-[#F7FBFA] flex justify-center items-center flex-col'>
-      <div className='text-stone-950 text-2xl font-bold  leading-loose text-left py-10'>
+    <section class='bg-[#F7FBFA] flex justify-center items-center flex-col pb-10'>
+      <div className='text-stone-950 text-2xl font-bold  leading-loose text-left py-10 flex justify-start'>
         Activity feed
       </div>
       <div className='flex'>
         <div className='flex flex-col items-center gap-4 flex-grow-3'>
-          <div className='w-[643px] h-[413px] bg-zinc-100 rounded-[30px] p-6'>
+          <div className='w-[675px] h-[350px] bg-zinc-100 rounded-[30px] p-6'>
             <div className='flex items-start justify-between w-full'>
               <div className='flex flex-col items-start gap-2'>
                 <div className="w-[362px] text-black text-[38px] font-normal font-['OT Brut'] leading-[48px]">
@@ -49,7 +49,7 @@ export default function ActivityFeed() {
               </div>
             </div>
           </div>
-          <div className='w-[643px] h-[413px] bg-zinc-100 rounded-[30px] p-6'>
+          <div className='w-[675px] h-[350px] bg-zinc-100 rounded-[30px] p-6'>
             <div className='flex items-start justify-between w-full'>
               <div className='flex flex-col items-start gap-2'>
                 <div className="w-[362px] text-black text-[38px] font-normal font-['OT Brut'] leading-[48px]">
@@ -95,7 +95,7 @@ export default function ActivityFeed() {
                 <div className=' text-stone-950 text-[22px] font-medium leading-[18.59px] py-10'>
                   New Drone Fleet for Whales
                 </div>
-                <div className="w-96 text-stone-950 text-[17px] font-medium font-['Inter'] leading-normal pb-10">
+                <div className='w-96 text-stone-950 text-[17px] font-medium leading-normal pb-10'>
                   We will be purchasing new drones to collect photogrammetry
                   data on whales to determine the animals' body condition, and
                   we'll be deploying a fixed-wing UAV as we continue trying to
@@ -103,12 +103,12 @@ export default function ActivityFeed() {
                   distribution surveys of marine mammals.
                 </div>
                 <div className='w-[153px] h-11 px-7 py-[13px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex'>
-                  <div className="text-center text-gray-900 text-base font-medium font-['Inter'] leading-normal">
+                  <div className='text-center text-gray-900 text-base font-medium leading-normal'>
                     ❌ Deny
                   </div>
                 </div>
                 <div className='w-[153px] h-11 px-7 py-[13px] bg-stone-950 rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex mx-10'>
-                  <div className="text-center text-white text-base font-bold font-['Inter'] leading-normal">
+                  <div className='text-center text-white text-base font-bold leading-normal'>
                     👍 Approve
                   </div>
                 </div>
