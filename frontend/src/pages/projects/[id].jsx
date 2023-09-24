@@ -1,23 +1,15 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { usePrivy, useWallets } from '@privy-io/react-auth';
 import { ethers } from 'ethers';
-import { WalletService } from '@unlock-protocol/unlock-js';
 import ActivityFeed from '@/components/activityFeed';
 import Modal from '@/components/modal';
+import abi from '../../../contracts/abis/KeyPurchaser.json';
 
 export default function Project() {
-  const router = useRouter();
   const {
     authenticated,
   } = usePrivy();
   const { wallets } = useWallets();
-  const networks = {
-    4: {
-      unlockAddress: '0x627118a4fB747016911e5cDA82e2E77C531e8206', // Smart contracts docs include all addresses on all networks
-      provider: 'https://rpc.unlock-protocol.com/5',
-    },
-  };
 
   const [isModalOpen, setModalOpen] = useState(false);
   const handleOpenModal = () => setModalOpen(true);
@@ -28,40 +20,41 @@ export default function Project() {
   const handleDonate = async (e) => {
     e.preventDefault();
     setLoading(true);
+    const safeAddress = localStorage.getItem('safe');
     const provider = await wallets[0]?.getEthersProvider();
     const signer = await provider?.getSigner();
-    const safeAddress = localStorage.getItem('safe');
     const amount = depositAmount.toString();
     const safeAmount = ethers.utils.parseUnits(amount, 'ether').toHexString();
     const transactionParameters = {
-      to: '0x8C0Efe2C9c70eE385e21a7800081f6079A6fadA9',
-      // to: safeAddress
+      to: safeAddress || '0x8C0Efe2C9c70eE385e21a7800081f6079A6fadA9',
       value: safeAmount,
     };
-    const tx = await signer.sendTransaction(transactionParameters);
-    tx.wait().then((receipt) => {
+    const tx1 = await signer.sendTransaction(transactionParameters);
+    tx1.wait().then((receipt) => {
       if (receipt.status === 1) {
-        console.log('Transaction confirmed');
         setModalOpen(true);
+        console.log('Transaction confirmed');
       }
       setLoading(false);
     });
 
-
-    // TODO: deposit unlock keys w/ lock address
-    const walletService = new WalletService(networks);
-    await walletService.connect(provider, wallets[0]);
-    // const lockAddress = localStorage.getItem('lock');
-    await walletService.purchaseKey(
-      {
-        "0x15884a642ed752f64f507b40ac2def2104eb3514"
-      },
-      {}, // transaction options
-      (error, hash) => {
-        console.log({ hash });
-      },
-    );
-
+    const deposit = depositAmount.toString();
+    const keyPrice = ethers.utils.parseUnits(deposit);
+    const address = await signer.getAddress();
+    await wallets[0]?.switchChain(5);
+    const keyAddress = process.env.NEXT_PUBLIC_KEY_PURCHASE_ADDRESS;
+    const lockAddress = localStorage.getItem('lock');
+    const keyContract = new ethers.Contract(keyAddress, abi, signer);
+    // const tx2 = await keyContract.purchaseSingleKey(
+    //   lockAddress || '0x15884A642ED752F64F507B40AC2dEF2104EB3514',
+    //   keyPrice,
+    //   address,
+    //   address,
+    //   address,
+    //   0,
+    //   { value: keyPrice, gasLimit: 80000 },
+    // );
+    // await tx2.wait();
   };
 
   return (
@@ -155,36 +148,37 @@ export default function Project() {
                   <div>10 days</div>
                 </div>
               </div>
-              {loading ? <p>Loading...</p> : (
-                <div className="flex sm:flex-row flex-col gap-5 w-full mt-4">
-                  <form
-                    onSubmit={handleDonate}
-                    action="#"
-                    className="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-gray-600 shadow-lg shadow-gray-200/20 border border-gray-200 bg-gray-100 rounded-full ease-linear focus-within:bg-white focus-within:border-blue-600 z-5"
-                  >
-                    <input
-                      type="text"
-                      name="depositAmount"
-                      id="depositAmount"
-                      placeholder="Minimum donation 0.00001"
-                      className="w-full py-3 outline-none bg-transparent z-50"
-                      value={depositAmount}
-                      onChange={(e) => setDepositAmount(e.target.value)}
-                    />
-                    <button
-                      type="submit"
-                      disabled={!authenticated || isModalOpen}
-                    // onClick={handleOpenModal}
-                      className="flex text-white justify-center items-center w-max min-w-max sm:w-max px-6 h-12 rounded-full outline-none relative overflow-hidden border duration-300 ease-linear after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554] hover:after:opacity-100 hover:after:scale-[2.5] bg-blue-600 border-transparent hover:border-[#172554] disabled:opacity-50 disabled:cursor-not-allowed"
+              {/* eslint-disable-next-line no-nested-ternary */}
+              {loading ? <p>Loading...</p>
+                : (
+                  <div className="flex sm:flex-row flex-col gap-5 w-full mt-4">
+                    <form
+                      onSubmit={handleDonate}
+                      action="#"
+                      className="py-1 pl-6 w-full pr-1 flex gap-3 items-center text-gray-600 shadow-lg shadow-gray-200/20 border border-gray-200 bg-gray-100 rounded-full ease-linear focus-within:bg-white focus-within:border-blue-600 z-5"
                     >
-                      <span className="hidden sm:flex relative z-[5]">
-                        Donate with ETH
-                      </span>
-                      <span className="flex sm:hidden relative z-[5]" />
-                    </button>
-                  </form>
-                </div>
-              ) }
+                      <input
+                        type="text"
+                        name="depositAmount"
+                        id="depositAmount"
+                        placeholder="Minimum donation 0.00001"
+                        className="w-full py-3 outline-none bg-transparent z-50"
+                        value={depositAmount}
+                        onChange={(e) => setDepositAmount(e.target.value)}
+                      />
+                      <button
+                        type="submit"
+                        disabled={!authenticated || isModalOpen}
+                        className="flex text-white justify-center items-center w-max min-w-max sm:w-max px-6 h-12 rounded-full outline-none relative overflow-hidden border duration-300 ease-linear after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554] hover:after:opacity-100 hover:after:scale-[2.5] bg-blue-600 border-transparent hover:border-[#172554] disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        <span className="hidden sm:flex relative z-[5]">
+                          Donate with ETH
+                        </span>
+                        <span className="flex sm:hidden relative z-[5]" />
+                      </button>
+                    </form>
+                  </div>
+                ) }
 
               <div className="mt-4 flex items-start">
                 <div className="text-lg font-semibold">Donors</div>
