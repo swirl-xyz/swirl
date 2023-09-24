@@ -7,18 +7,19 @@ import "./ProjectAccount.sol";
 import "./interfaces/IERC6551Account.sol";
 
 contract ProjectExtended is ERC721URIStorage {
-    uint256 private _tokenId;
+    uint256 public _tokenId;
     ERC6551Registry private _registry;
     ProjectAccount private _accountContract;
     address public accountAddress;
 
     event minted(uint256);
 
-    constructor() ERC721("Project", "SWRL") {
+    constructor() ERC721("ProjectExtended", "SWRL") {
         _registry = new ERC6551Registry();
     }
 
-    function mint(address to, string memory tokenURI) external payable {
+    // function mint(address to, string memory tokenURI) external payable {
+    function mint(address to, string memory tokenURI) external returns( address) {
         _tokenId += 1;
         _accountContract = new ProjectAccount();
         uint256 salt = generateRandomSalt();
@@ -28,9 +29,15 @@ contract ProjectExtended is ERC721URIStorage {
         require(accountAddress == expectedAddress, "wrong addresses");
         _safeMint(to, _tokenId);
         _setTokenURI(_tokenId, tokenURI);
-        loadBalance(payable(accountAddress), msg.value);
+        // loadBalance(payable(accountAddress), msg.value);
         emit minted(_tokenId);
+        return (accountAddress);
     }
+
+    function getTokenID() external view returns(uint256) {
+        return _tokenId;
+    }
+
 
     function gift(address to, uint256 tokenId) external {
         this.safeTransferFrom(msg.sender, to, tokenId);
@@ -51,8 +58,8 @@ contract ProjectExtended is ERC721URIStorage {
         return 1;
     }
 
-    function loadBalance(address payable to, uint amount) internal {
-        (bool success, ) = to.call{value: amount}("");
-        require(success, "Failed to send Ether");
-    }
+    // function loadBalance(address payable to, uint amount) internal {
+    //     (bool success, ) = to.call{value: amount}("");
+    //     require(success, "Failed to send Ether");
+    // }
 }

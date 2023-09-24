@@ -2,13 +2,13 @@ import { usePrivy } from "@privy-io/react-auth";
 import Link from "next/link";
 
 export default function Navbar() {
-  const { login, ready, authenticated, logout } = usePrivy();
+  const { login, ready, authenticated } = usePrivy();
 
   return (
     <div className='p-4 bg-white'>
       <div className='z-10 w-full items-center justify-between font-mono text-sm flex mx-auto'>
         <div className='flex items-center'>
-          <img src='/logo.svg' alt='logo' className='mr-2 h-10' />
+          <img src='./logo.svg' alt='logo' className='mr-2 h-10' />
         </div>
         <div className='flex items-center'>
           {ready && authenticated ? (
@@ -20,7 +20,6 @@ export default function Navbar() {
                 Start A Project
               </Link>
               <Link href='/profile'>Profile</Link>
-              <button onClick={logout}>Log out</button>
             </>
           ) : (
             <button
