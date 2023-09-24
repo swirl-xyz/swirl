@@ -12,7 +12,7 @@ export default function Project() {
   const handleCloseModal = () => setModalOpen(false);
 
   return (
-    <main className={`flex min-h-screen flex-col`}>
+    <main class='flex min-h-screen flex-col'>
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
       <section class='relative py-22 bg-white'>
         <div class='mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col lg:flex-row gap-10 lg:gap-12'>
@@ -20,13 +20,13 @@ export default function Project() {
             <span class='absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-green-400 blur-xl opacity-60 lg:opacity-95 lg:block hidden'></span>
             <span class='absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-blue-600 blur-xl opacity-80'></span>
           </div>
-          <span class='w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-blue-600 to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90'></span>
+          <span className='w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-blue-600 to-green-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90' />
           <div
-            class='relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 
+            className='relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8
             lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2'
           >
             <h1
-              class='text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
+              className='text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
             font-bold text-gray-900'
             >
               Whale Research with Drones
@@ -46,7 +46,7 @@ export default function Project() {
               />
               <span>Mariana Oka</span>
             </div>
-            <div class='mt-8 text-gray-700'>
+            <div className='mt-8 text-gray-700'>
               We need your help to fund the purchase and construction of new
               drones, expeditions into the field to collect samples, and data
               analysis and dissemination. By funding this work you are
@@ -78,7 +78,7 @@ export default function Project() {
               as the collection of critical data that is of benefit to whales
               and ultimately humanity.
             </div>
-            <div class='mt-10  w-full flex max-w-md mx-auto lg:mx-0'></div>
+            <div className='mt-10  w-full flex max-w-md mx-auto lg:mx-0' />
           </div>
           <div className='flex flex-col'>
             <div className='flex flex-col items-center lg:w-[465px] lg:h-[465px] lg:max-w-none lg:mx-0 mx-auto max-w-2xl'>
@@ -120,7 +120,7 @@ export default function Project() {
                     <span className='hidden sm:flex relative z-[5]'>
                       Donate with ETH
                     </span>
-                    <span className='flex sm:hidden relative z-[5]'></span>
+                    <span className='flex sm:hidden relative z-[5]' />
                   </button>
                 </form>
               </div>

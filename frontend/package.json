@@ -9,7 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ethersproject/providers": "^5.7.2",
     "@privy-io/react-auth": "^1.40.3",
+    "@snapshot-labs/snapshot.js": "^0.6.2",
     "autoprefixer": "10.4.16",
     "eslint-config-next": "13.5.2",
     "next": "13.5.2",
