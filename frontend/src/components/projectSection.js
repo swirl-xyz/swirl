@@ -130,8 +130,8 @@ export default function ProjectPage() {
       <div className="flex justify-center items-center">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl items-start">
           {filteredProjects.map((project, index) => (
-            <Link href={`/projects/${index}`}>
-              <div key={project.title}>
+            <Link key={project.title} href={`/projects/${index}`}>
+              <div>
                 <Card
                   title={project.title}
                   author={project.author}
