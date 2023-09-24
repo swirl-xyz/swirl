@@ -2,9 +2,7 @@ import { ethers } from 'ethers';
 import { useWallets } from '@privy-io/react-auth';
 import { TokenboundClient } from '@tokenbound/sdk';
 import { EthersAdapter, SafeFactory } from '@safe-global/protocol-kit';
-
 import { Inter } from 'next/font/google';
-import { useWallets } from '@privy-io/react-auth';
 import ProjectSection from '../components/projectSection';
 import unlockClient from '../clients/unlock';
 import abi from '../../contracts/abis/ProjectAccount.json';

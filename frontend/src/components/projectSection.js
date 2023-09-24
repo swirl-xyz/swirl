@@ -7,10 +7,6 @@ const projects = [
     author: 'Patrick Stewart',
     image: '/art1.svg',
     category: 'biology',
-<<<<<<< HEAD
-    TBA: '0xB639496480BdF6491815Cc7A8d0800E104Cf582c',
-=======
->>>>>>> main
   },
   {
     title: 'Trends in Quantum Physics',
@@ -23,10 +19,6 @@ const projects = [
     author: 'Author C',
     image: '/art3.png',
     category: 'healthcare',
-<<<<<<< HEAD
-
-=======
->>>>>>> main
   },
   {
     title: 'Sustaining the Earth: Ecology Projects',
@@ -39,10 +31,6 @@ const projects = [
     author: 'Author E',
     image: '/art5.jpeg',
     category: 'genetics',
-<<<<<<< HEAD
-
-=======
->>>>>>> main
   },
   {
     title: 'Open Source Prototyping for Biology',
@@ -55,30 +43,18 @@ const projects = [
     author: 'Jane Hopkins',
     image: '/art7.jpeg',
     category: 'trending',
-<<<<<<< HEAD
-
-=======
->>>>>>> main
   },
   {
     title: 'Radiation Detection Hardware Network in Japan',
     author: 'Satoshi Nakamoto',
     image: '/art8.jpeg',
     category: 'trending',
-<<<<<<< HEAD
-
-  },
-];
-
-function Card({ title, author, image }) {
-=======
   },
 ];
 
 function Card({
   title, author, image, index,
 }) {
->>>>>>> main
   return (
     <div className="w-[302px] h-[450px] relative">
       <div className="w-[302px] h-[450px] left-0 top-0 absolute rounded-2xl border border-neutral-300 border-opacity-60" />
@@ -92,12 +68,6 @@ function Card({
           {author}
         </div>
       </div>
-<<<<<<< HEAD
-      <img
-        className="w-[302px] h-[302px] left-0 top-0 absolute rounded-tl-[10px] rounded-tr-[10px]"
-        src={image}
-      />
-=======
       <Link
         href={`/projects/${index}`}
       >
@@ -106,7 +76,6 @@ function Card({
           src={image}
         />
       </Link>
->>>>>>> main
     </div>
   );
 }
@@ -162,14 +131,15 @@ export default function ProjectPage() {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl items-start">
           {filteredProjects.map((project, index) => (
             <Link href={`/projects/${index}`}>
-              <Card
-                key={project.title}
-                title={project.title}
-                author={project.author}
-                image={project.image}
-                category={project.category}
-                className={index === 0 ? 'first-card' : ''}
-              />
+              <div key={project.title}>
+                <Card
+                  title={project.title}
+                  author={project.author}
+                  image={project.image}
+                  category={project.category}
+                  className={index === 0 ? 'first-card' : ''}
+                />
+              </div>
             </Link>
           ))}
         </div>
