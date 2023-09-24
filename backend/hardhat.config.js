@@ -12,8 +12,6 @@ module.exports = {
       goerli: {
         url: `${process.env.ALCHEMY_GOERLI_URL}`,
         accounts: [`0x${process.env.PRIVATE_KEY}`],
-        gas: 2100000,
-        gasPrice: 8000000000,
       }, 
       // 0xBE3F9AFA4eaB299E07e42067b4a568579047cC5f
       celo: {
@@ -40,7 +38,7 @@ module.exports = {
       //0x2701BFdB65B980088299Ed191e73A1fFdF3A8c92
       arbitrum_goerli: {
         url: process.env.ALCHEMY_ARBITRUM_URL,
-        accounts: [`0x${process.env.PRIVATE_KEY}`],
-      }
-  },
+        accounts: [`0x${process.env.PRIVATE_KEY}`]}
+      // 0xaAA9A9aF232e461C73f8bd37F2ff8eb05249Bbf3
+  }
 };

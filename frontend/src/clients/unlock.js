@@ -1,4 +1,5 @@
 import { ethers } from 'ethers';
+
 const abis = require('@unlock-protocol/contracts');
 
 const UNLOCK_FACTORY_CONTRACT_ADDRESS = '0x627118a4fB747016911e5cDA82e2E77C531e8206'; // goerli contract address
@@ -54,6 +55,8 @@ class UnlockClient {
       const receipt = await transaction.wait();
       const lockAddress = receipt.logs[0].address;
 
+      localStorage.setItem(userWallet.address, lockAddress);
+
       return lockAddress;
     } catch (error) {
       console.error('Error: [Clients/Unlock]', error);
@@ -64,7 +67,9 @@ class UnlockClient {
 
   createKey() {}
 
-  getKeys() {}
+  getKeys() {
+
+  }
 }
 
 export default new UnlockClient();
