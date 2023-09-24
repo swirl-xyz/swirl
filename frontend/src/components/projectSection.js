@@ -58,11 +58,11 @@ function Card({
   return (
     <div className="w-[302px] h-[450px] relative">
       <div className="w-[302px] h-[450px] left-0 top-0 absolute rounded-2xl border border-neutral-300 border-opacity-60" />
-      <div className="w-[230px] left-[36px] top-[339px] absolute text-center text-black text-lg font-extrabold font-['Inter'] leading-normal">
+      <div className="w-[230px] left-[36px] top-[339px] absolute text-center text-black text-lg font-extrabold  leading-normal">
         {title}
       </div>
       <div className="w-[250px] pt-[27px] left-[26px] top-[372px] absolute justify-center items-center inline-flex">
-        <div className="w-[296px] text-center text-zinc-600 text-sm font-normal font-['Inter'] leading-[21px]">
+        <div className="w-[296px] text-center text-zinc-600 text-sm font-normal  leading-[21px]">
           by
           {' '}
           {author}
@@ -114,7 +114,7 @@ export default function ProjectPage() {
     : projects.filter((project) => project.category === activeFilter);
 
   return (
-    <div className="py-5 bg-white">
+    <div className="py-5 px-20 bg-white">
       <h3 className="px-10 text-xl font-extrabold">Explore Projects</h3>
       <div className="flex px-10 py-5">
         {categories.map((category) => (
@@ -130,15 +130,17 @@ export default function ProjectPage() {
       <div className="flex justify-center items-center">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl items-start">
           {filteredProjects.map((project, index) => (
-            <Card
-              index={index}
-              key={project.title}
-              title={project.title}
-              author={project.author}
-              image={project.image}
-              category={project.category}
-              className={index === 0 ? 'first-card' : ''}
-            />
+            <Link href={`/projects/${index}`}>
+              <div key={project.title}>
+                <Card
+                  title={project.title}
+                  author={project.author}
+                  image={project.image}
+                  category={project.category}
+                  className={index === 0 ? 'first-card' : ''}
+                />
+              </div>
+            </Link>
           ))}
         </div>
       </div>

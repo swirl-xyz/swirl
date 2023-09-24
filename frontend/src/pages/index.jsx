@@ -2,7 +2,6 @@ import { ethers } from 'ethers';
 import { useWallets } from '@privy-io/react-auth';
 import { TokenboundClient } from '@tokenbound/sdk';
 import { EthersAdapter, SafeFactory } from '@safe-global/protocol-kit';
-
 import { Inter } from 'next/font/google';
 import ProjectSection from '../components/projectSection';
 import unlockClient from '../clients/unlock';
@@ -77,7 +76,7 @@ export default function Home() {
     <main className={`flex min-h-screen flex-col ${inter.className}`}>
 
       {/* DEBUG */}
-      <button type="button" onClick={createLock}>Get lock</button>
+      {/* <button type="button" onClick={createLock}>Get lock</button> */}
 
       <section
         className="relative py-28 bg-white bg-center bg-cover"
@@ -94,8 +93,8 @@ export default function Home() {
             lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2"
           >
             <h1
-              className='text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
-            font-bold text-white font-["Inter"]'
+              className="text-3xl leading-tight sm:text-4xl md:text-5xl xl:text-6xl
+            font-bold text-white "
             >
               Vote, empower and fund scientific discoveries
             </h1>
