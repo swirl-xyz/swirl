@@ -63,9 +63,9 @@ class UnlockClient {
     }
   }
 
-  createKey() {
+  createKey() {}
 
-  }
+  getKeys() {}
 }
 
 export default new UnlockClient();
