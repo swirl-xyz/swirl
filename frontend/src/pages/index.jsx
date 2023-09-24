@@ -1,14 +1,13 @@
-import { Inter } from 'next/font/google';
-import ProjectSection from '../components/projectSection';
-import unlockClient from '../clients/unlock';
-import { useWallets } from '@privy-io/react-auth';
-
 import { ethers } from 'ethers';
+import { useWallets } from '@privy-io/react-auth';
 import { TokenboundClient } from '@tokenbound/sdk';
 import { EthersAdapter, SafeFactory } from '@safe-global/protocol-kit';
+
 import ProjectSection from '../components/projectSection';
+import unlockClient from '../clients/unlock';
 import abi from '../../contracts/abis/ProjectAccount.json';
 
+import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
