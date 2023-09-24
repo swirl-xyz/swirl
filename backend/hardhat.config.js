@@ -10,6 +10,9 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
+    goerli: {
+      chainId
+    }
     // testnet_aurora: {
     //   url: 'https://testnet.aurora.dev',
     //   accounts: [`0x${AURORA_PRIVATE_KEY}`],
