@@ -9,9 +9,11 @@ export default function Navbar() {
   return (
     <div className="p-4 bg-white">
       <div className="z-10 w-full items-center justify-between font-mono text-sm flex mx-auto">
-        <div className="flex items-center">
-          <img src="/logo.svg" alt="logo" className="mr-2 h-10" />
-        </div>
+        <Link href="/">
+          <div className="flex items-center">
+            <img src="/logo.svg" alt="logo" className="mr-2 h-10" />
+          </div>
+        </Link>
         <div className="flex items-center">
           {ready && authenticated ? (
             <>
