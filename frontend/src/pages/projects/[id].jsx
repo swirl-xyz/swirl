@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import ActivityFeed from "@/components/activityFeed";
 
 export default function Project() {
   const router = useRouter();
@@ -46,7 +47,7 @@ export default function Project() {
               critical data that is of benefit to whales and ultimately
               humanity.
             </div>{" "}
-            <div>
+            <div class='mt-4 text-gray-700'>
               We need your help to fund the purchase and construction of new
               drones, expeditions into the field to collect samples, and data
               analysis and dissemination. By funding this work you are
@@ -57,7 +58,7 @@ export default function Project() {
               of new drones, expeditions into the field to collect samples, and
               data analysis and dissemination.{" "}
             </div>
-            <div>
+            <div class='mt-4 text-gray-700'>
               By funding this work you are supporting the development of a new
               data collection tool that will be easily replicable by others as
               well as the collection of critical data that is of benefit to
@@ -140,6 +141,7 @@ export default function Project() {
           </div>
         </div>
       </section>
+      <ActivityFeed />
     </main>
   );
 }
