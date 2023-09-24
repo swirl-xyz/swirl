@@ -131,14 +131,10 @@ export default function ActivityFeed() {
                     2.5 ETH
                   </div>
                   <div className=" text-stone-950 text-[22px] font-medium leading-[18.59px] py-10">
-                    New Drone Fleet for Whales
+                    New Lab Equipment
                   </div>
                   <div className="w-96 text-stone-950 text-[17px] font-medium leading-normal pb-10">
-                    We will be purchasing new drones to collect photogrammetry
-                    data on whales to determine the animals' body condition, and
-                    we'll be deploying a fixed-wing UAV as we continue trying to
-                    develop a cost-effective, autonomous tool for conducting
-                    distribution surveys of marine mammals.
+                    We will be purchasing new lab equipment to help us investigate certain chemical interactions for a new pharmaceutical formula.
                   </div>
                   <div className="flex gap-4">
                     <div className="w-[153px] h-11 px-7 py-[13px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
