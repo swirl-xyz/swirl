@@ -1,6 +1,6 @@
 import snapshot from '@snapshot-labs/snapshot.js';
 
-const hub = 'https://testnet.snapshot.org'; // main net: https://testnet.snapshot.org
+const hub = 'https://testnet.snapshot.org'; // main net: https://hub.snapshot.org
 const snapshotClient = new snapshot.Client712(hub);
 
 const BASE_URL = 'https://testnet.snapshot.org/graphql';
