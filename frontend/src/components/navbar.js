@@ -10,19 +10,25 @@ export default function Navbar() {
     <div className="p-4 bg-white">
       <div className="z-10 w-full items-center justify-between font-mono text-sm flex mx-auto">
         <div className="flex items-center">
-          <img src="./logo.svg" alt="logo" className="mr-2 h-10" />
+          <img src="/logo.svg" alt="logo" className="mr-2 h-10" />
         </div>
         <div className="flex items-center">
           {ready && authenticated ? (
             <>
-              <Link href="/" className="mr-2">
-                Explore
-              </Link>
-              <Link href="/create" className="mr-2">
-                Start A Project
-              </Link>
-              <Link href="/profile">Profile</Link>
-              <button onClick={() => logout}>Logout</button>
+              <div className="w-[120px] h-11 px-4 py-[8px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
+                <Link href="/" className="mr-2">
+                  Explore
+                </Link>
+              </div>
+              <div className="w-[190px] h-11 px-4 py-[8px]  mx-8 rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
+                <Link href="/create" className="mr-2">
+                  Start A Project
+                </Link>
+              </div>
+              <div className="w-[120px] h-11 px-4 py-[8px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex mr-8">
+                <Link href="/profile">Profile</Link>
+              </div>
+              <button onClick={logout}>Logout</button>
             </>
           ) : (
             <button
