@@ -1,40 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# SWIRL
 
-## Getting Started
+A novel approach to P2P funding for de-centralized science using ERC-6551.
 
-First, run the development server:
+## DESCRIPTION
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+We leveraged ERC-6551 to introduce accountability between research groups and donors of research projects. Research groups use our app to create a shared Safe that holds the funds for their research project. When a Safe is created, an NFT is issued to represent ownership of it. Donors can send donations to the research group's safe, and research groups can transfer ownership of the Safe by sending their NFT to another entity.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Since the Safe is guarded, when the research group wants to withdraw funds, they must issue a withdrawal proposal instead. This triggers a simple-majority voting round in which all donors are invited to apply due diligence and review the reasons for the application of funds. Donors may decide to vote in favour of the withdrawal request, or they may vote against it. All voting is accomplished on-chain using Uma's oSnap protocol.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+A research group can also propose to transfer ownership of the safe to another entity, together with all of it's funds. When a Safe is created, we mint an NFT with a wallet. This wallet is used as a signature to sign transactions on the research group's Safe. If there is a vote of no confidence in the project, the research group can trade the NFT to another entity. In the event of a transfer, the transaction history and genealogy of the project is preserved clearly on-chain increasing audibility.
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## HOW ITS MADE
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+We used Gnosis Safe to create a research group's account. Donors send money to this wallet. Safe's guard functionality allows us to program the smart contract wallet to prevent direct withdrawals from the externally-owned account that created it. Instead, withdrawals must occur as the outcome of a voting round.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+We used Uma's oSnap protocol to provide on-chain voting for withdrawal requests and project transfer requests. Uma makes it easy to issue votes and also for donors to dispute the result of any voting outcome within a set liveness period. Our frontend uses the Snapshot SDK to issue new proposals, and for donors to explictily cast a vote.
 
-## Learn More
+We used Unlock to issue NFTs to donors when they send funds to the research group's Safe. This NFT represents their right to be invited to any voting rounds. Whenever a new voting round is created, we query Unlock's subgraph protocol to find all prospective voters using these soul-bound NFTs.
 
-To learn more about Next.js, take a look at the following resources:
+We used the ERC-6551 protocol to mint a custom NFT which is used to sign transactions in the research group's Safe. This NFT is transferrable, thus opening up the prospect of 'NFT owned Safes.'
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Finally, we used Privy to simplify the login process UX on the application itself. Research scientists should be spending their time researching, not figuring how to setup wallets!
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+We used Hardhat to develop and deploy our smart contracts and NextJS to build the frontend. A lot of coffee was consumed in the process.
