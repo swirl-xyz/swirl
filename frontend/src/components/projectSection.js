@@ -131,7 +131,8 @@ export default function ProjectPage() {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl items-start">
           {filteredProjects.map((project, index) => (
             <Card
-              index={index}
+              // hack to load the correct contract for voting quorum
+              index={index === 2 ? 'innovations-in-healthcare' : index}
               key={project.title}
               title={project.title}
               author={project.author}
