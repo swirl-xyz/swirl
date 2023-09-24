@@ -33,59 +33,34 @@ export default function Project() {
             </h1>
             <div className="pt-5 opacity-50">Researchers:</div>
             <div className="flex items-center gap-2">
-              <img
-                src="/art4.png"
-                alt="Donor 3"
-                className="w-10 h-10 rounded-full"
-              />
-              <span>Paige Jones &</span>
+              <span>Dr. Lol</span>
               <img
                 src="/art3.png"
                 alt="Donor 3"
                 className="w-10 h-10 rounded-full"
               />
-              <span>Mariana Oka</span>
             </div>
             <div className="mt-8 text-gray-700">
-              We need your help to fund the purchase and construction of new
-              drones, expeditions into the field to collect samples, and data
-              analysis and dissemination. By funding this work you are
-              supporting the development of a new data collection tool that will
-              be easily replicable by others as well as the collection of
-              critical data that is of benefit to whales and ultimately
-              humanity.
+              Humora Pharmaceuticals is a groundbreaking biotechnology firm dedicated to enhancing human wellness and social harmony through the advancement of pioneering pharmaceutical solutions. At the heart of our mission is our flagship development—Humorax™, a revolutionary medication designed to instill a sense of humor in individuals. Our groundbreaking research is poised to transform the realms of mental health, social interaction, and even workplace efficiency.
             </div>
             {' '}
             <div className="mt-4 text-gray-700">
-              We need your help to fund the purchase and construction of new
-              drones, expeditions into the field to collect samples, and data
-              analysis and dissemination. By funding this work you are
-              supporting the development of a new data collection tool that will
-              be easily replicable by others as well as the collection of
-              critical data that is of benefit to whales and ultimately
-              humanity. We need your help to fund the purchase and construction
-              of new drones, expeditions into the field to collect samples, and
-              data analysis and dissemination.
-              {' '}
+              We believe that humor is an untapped medicine that can transcend barriers, mend relationships, and significantly enhance quality of life. Our vision is to revolutionize the mental health landscape by providing a scientifically validated pathway to a happier, more resilient, and socially rewarding existence.
             </div>
             <div className="mt-4 text-gray-700">
-              By funding this work you are supporting the development of a new
-              data collection tool that will be easily replicable by others as
-              well as the collection of critical data that is of benefit to
-              whales and ultimately humanity. We need your help to fund the
-              purchase and construction of new drones, expeditions into the
-              field to collect samples, and data analysis and dissemination. By
-              funding this work you are supporting the development of a new data
-              collection tool that will be easily replicable by others as well
-              as the collection of critical data that is of benefit to whales
-              and ultimately humanity.
+              Our Products
+              <br />
+              - Humorax™: Our first-of-its-kind pill designed to activate specific neurotransmitters that trigger a genuine sense of humor.
+              <br />
+              - Humorax+ App: A complementary application that provides cognitive-behavioral exercises to sustain and enrich the effects of Humorax™.
+              {' '}
             </div>
             <div className="mt-10  w-full flex max-w-md mx-auto lg:mx-0" />
           </div>
           <div className="flex flex-col">
             <div className="flex flex-col items-center lg:w-[465px] lg:h-[465px] lg:max-w-none lg:mx-0 mx-auto max-w-2xl">
               <img
-                src="/art1.svg"
+                src="/art3.png"
                 alt="Hero image"
                 width="2350"
                 height="2359"
@@ -95,11 +70,11 @@ export default function Project() {
               <div className="flex justify-between w-full mt-4 bg-gray-50 rounded-[18.22px] px-4 py-2">
                 <div>
                   <strong>Current Donations</strong>
-                  <div>12 ETH</div>
+                  <div>420 ETH</div>
                 </div>
                 <div>
                   <strong>Project Ends In</strong>
-                  <div>10 days</div>
+                  <div>369 days</div>
                 </div>
               </div>
 
