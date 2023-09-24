@@ -1,26 +1,51 @@
 import { useState, useEffect } from 'react';
 import { useWallets } from '@privy-io/react-auth';
 
+import useWeb3Provider from '../hooks/useWeb3Provider';
+import proposalsClient from '../clients/proposals';
+
 const OWNER_ADDRESS = '0x43BD7C3aB2526956c31e18e42d2C12E22dED6E04';
 
 export default function ActivityFeed() {
   const { wallets } = useWallets();
+  const { web3Provider } = useWeb3Provider();
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const [isDonor, setIsDonor] = useState(wallets?.[0].address !== OWNER_ADDRESS);
+  const [isDonor, setIsDonor] = useState(wallets?.[0]?.address !== OWNER_ADDRESS);
   const [isWithdrawal, setIsWithdrawal] = useState(true);
   const [activeTab, setActiveTab] = useState('withdraw');
 
   useEffect(() => {
-    setIsDonor(wallets?.[0].address !== OWNER_ADDRESS);
+    setIsDonor(wallets?.[0]?.address !== OWNER_ADDRESS);
     console.log(wallets);
   }, [wallets]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(title, description, category);
+  };
+
+  const vote = (choice) => {
+    const userWallet = wallets[0];
+
+    if (!userWallet) {
+      return;
+    }
+
+    const choiceId = {
+      yes: 1,
+      no: 2,
+      abstain: 3,
+    }[choice];
+
+    proposalsClient.vote({
+      web3Provider,
+      userWalletAddress: userWallet.address,
+      proposalId: '0x6c2447dbd53ada4c31ced0391b883bf890e7eb355b2d9b274de5b1c715adef78',
+      choiceId,
+    });
   };
 
   return (
@@ -120,14 +145,14 @@ export default function ActivityFeed() {
                   </div>
                   <div className="flex gap-4">
                     <div className="w-[153px] h-11 px-7 py-[13px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
-                      <div className="text-center text-gray-900 text-base font-medium leading-normal">
+                      <button className="text-center text-gray-900 text-base font-medium leading-normal" onClick={() => vote('no')} type="button">
                         ❌ Deny
-                      </div>
+                      </button>
                     </div>
                     <div className="w-[153px] h-11 px-7 py-[13px] bg-stone-950 rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
-                      <div className="text-center text-white text-base font-bold leading-normal">
+                      <button className="text-center text-white text-base font-bold leading-normal" onClick={() => vote('yes')} type="button">
                         👍 Approve
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -162,14 +187,14 @@ export default function ActivityFeed() {
                   </div>
                   <div className="flex gap-4">
                     <div className="w-[153px] h-11 px-7 py-[13px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
-                      <div className="text-center text-gray-900 text-base font-medium leading-normal">
+                      <button className="text-center text-gray-900 text-base font-medium leading-normal" onClick={() => vote('no')} type="button">
                         ❌ Deny
-                      </div>
+                      </button>
                     </div>
                     <div className="w-[153px] h-11 px-7 py-[13px] bg-stone-950 rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex">
-                      <div className="text-center text-white text-base font-bold leading-normal">
+                      <button className="text-center text-white text-base font-bold leading-normal" onClick={() => vote('yes')} type="button">
                         👍 Approve
-                      </div>
+                      </button>
                     </div>
                   </div>
                 </div>
