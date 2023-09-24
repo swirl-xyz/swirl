@@ -100,7 +100,10 @@ class ProposalsClient {
   }
 
   async vote({
-    web3Provider, userWalletAddress, proposalId, choiceId,
+    web3Provider,
+    userWalletAddress,
+    proposalId,
+    choiceId,
   }) {
     try {
       const result = await snapshotClient.vote(
@@ -111,7 +114,7 @@ class ProposalsClient {
           proposal: proposalId,
           type: 'single-choice',
           choice: choiceId,
-          reason: 'PLACEHOLDER REASON',
+          reason: choiceId === 1 ? 'HECK YEAH!' : 'HELL NO!',
           app: SNAPSHOT_APP,
         },
       );
