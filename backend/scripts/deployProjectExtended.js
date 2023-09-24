@@ -11,6 +11,7 @@ async function main() {
   project = await Project.deploy();
   await project.deployed();
   console.log("Project contract deployed at:", project.address);
+  console.log(project.functions)
 }
 
 // We recommend this pattern to be able to use async/await everywhere
