@@ -1,9 +1,28 @@
 import { Inter } from 'next/font/google';
 import ProjectSection from '../components/projectSection';
+import { useWallets } from '@privy-io/react-auth';
+import ProjectSection from '../components/projectSection';
+import unlockClient from '../clients/unlock';
+import useWeb3Provider from '../hooks/useWeb3Provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const { wallets } = useWallets();
+  const { web3Provider } = useWeb3Provider();
+
+  const createLock = async () => {
+    const [userWallet] = wallets;
+
+    if (!userWallet) {
+      return;
+    }
+
+    const result = await unlockClient.createLock({
+      userWallet,
+    });
+  };
+
   return (
     <main className={`flex min-h-screen flex-col ${inter.className}`}>
       <section

@@ -64,12 +64,17 @@ export default function Project() {
     };
     const safeTBAOwner = await safeFactory.deploySafe({ safeAccountConfig });
     const safeAddress = await safeTBAOwner.getAddress();
+    localStorage.setItem('safe', safeAddress);
 
     console.log('Your Safe has been deployed:');
     console.log(`https://goerli.etherscan.io/address/${safeAddress}`);
     console.log(`https://app.safe.global/gor:${safeAddress}`);
     setCreateState(states.ZODIAC);
+
     // TODO: add safe rules and connect to zodiac
+    // TODO: add unlock
+    // localStorage.setItem('lock', lockAddress);
+
     setCreateState(states.DONE);
   };
 
