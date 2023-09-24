@@ -30,7 +30,7 @@ export default function Navbar() {
               <div className="w-[120px] h-11 px-4 py-[8px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex mr-8">
                 <Link href="/profile">Profile</Link>
               </div>
-              <button onClick={logout}>Logout</button>
+              <button className="w-[120px] h-11 px-4 py-[8px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex mr-8" onClick={logout}>Logout</button>
             </>
           ) : (
             <button
