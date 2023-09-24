@@ -2,7 +2,9 @@ import { usePrivy } from '@privy-io/react-auth';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const { login, ready, authenticated } = usePrivy();
+  const {
+    login, ready, authenticated, logout,
+  } = usePrivy();
 
   return (
     <div className="p-4 bg-white">
@@ -20,6 +22,7 @@ export default function Navbar() {
                 Start A Project
               </Link>
               <Link href="/profile">Profile</Link>
+              <button onClick={() => logout}>Logout</button>
             </>
           ) : (
             <button

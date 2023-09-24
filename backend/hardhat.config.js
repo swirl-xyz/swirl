@@ -3,16 +3,16 @@ require("@nomicfoundation/hardhat-toolbox");
 /** @type import('hardhat/config').HardhatUserConfig */
 require("dotenv").config();
 
-// const AURORA_PRIVATE_KEY = process.env.AURORA_PRIVATE_KEY;
 module.exports = {
   solidity: "0.8.9",
   networks: {
     hardhat: {
       chainId: 1337,
     },
-    goerli: {
-      chainId
-    }
+      goerli: {
+        url: `${process.env.ALCHEMY_GOERLI_URL}`,
+        accounts: [`0x${process.env.PRIVATE_KEY}`],
+      }
     // testnet_aurora: {
     //   url: 'https://testnet.aurora.dev',
     //   accounts: [`0x${AURORA_PRIVATE_KEY}`],

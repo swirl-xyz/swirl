@@ -1,60 +1,9 @@
 import { Inter } from 'next/font/google';
-import { useWallets } from '@privy-io/react-auth';
-import { ethers } from 'ethers';
-import { TokenboundClient } from '@tokenbound/sdk';
-import { EthersAdapter, SafeFactory } from '@safe-global/protocol-kit';
 import ProjectSection from '../components/projectSection';
-import abi from '../../contracts/abis/ProjectAccount.json';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
-  // TO DO: add our own metadata
-  const tokenURI = 'https://chocolate-objective-giraffe-337.mypinata.cloud/ipfs/Qmefgi96NSNCJFrUHWuPH67Y6kuk8KMayb9vZGgzVYLNtg?_gl=1*1isypq3*rs_ga*MTc4MjMzNjM0NC4xNjg0NTc2MTI4*rs_ga_5RMPXG14TE*MTY4NDU3NjEyOC4xLjEuMTY4NDU3NjE3MS4xNy4wLjA.';
-  // const { wallets } = useWallets();
-  // const embeddedWallet = wallets.find(
-  //   (wallet) => wallet.walletClientType === 'privy',
-  // );
-
-  const mintProject = async () => {
-    // const provider = await embeddedWallet.getEthereumProvider();
-    // const signer = provider.getSigner()
-
-    const provider = new ethers.providers.JsonRpcProvider();
-    const signer = provider.getSigner();
-    const address = await signer.getAddress();
-    const contract = new ethers.Contract('0x67d269191c92Caf3cD7723F116c85e6E9bf55933', abi, signer);
-    await contract.mint(address, tokenURI);
-    const tokenID = await contract.getTokenID();
-    const chainID = await signer.getChainId();
-    const tokenboundClient = new TokenboundClient({ signer, chainId: chainID });
-    const tokenBoundAccount = tokenboundClient.getAccount({
-      tokenContract: '0x67d269191c92Caf3cD7723F116c85e6E9bf55933',
-      tokenId: ethers.BigNumber.from(tokenID).toNumber(),
-    });
-    console.log('Token bound account created!', tokenBoundAccount);
-
-    const ethAdapter = new EthersAdapter({
-      ethers,
-      signerOrProvider: signer,
-    });
-
-    const safeFactory = await SafeFactory.create({ ethAdapter });
-    const safeAccountConfig = {
-      owners: [
-        await signer.getAddress(),
-
-      ],
-      threshold: 1,
-    };
-    const safeSdkOwner1 = await safeFactory.deploySafe({ safeAccountConfig });
-    const safeAddress = await safeSdkOwner1.getAddress();
-
-    console.log('Your Safe has been deployed:');
-    console.log(`https://goerli.etherscan.io/address/${safeAddress}`);
-    console.log(`https://app.safe.global/gor:${safeAddress}`);
-  };
-
   return (
     <main className={`flex min-h-screen flex-col ${inter.className}`}>
       <section
@@ -77,7 +26,6 @@ export default function Home() {
             >
               Vote, empower and fund scientific discoveries
             </h1>
-            <button onClick={mintProject}>Create Project*******</button>
             <p className="mt-8 text-white">
               A novel approach to peer to peer scientific funding with direct
               democratic participation
