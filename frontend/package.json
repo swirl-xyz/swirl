@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@ethersproject/providers": "^5.7.2",
+    "@lottiefiles/react-lottie-player": "^3.5.3",
     "@privy-io/react-auth": "^1.40.3",
     "@safe-global/protocol-kit": "^1.3.0",
     "@safe-global/safe-core-sdk-types": "^2.3.0",

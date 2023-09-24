@@ -229,7 +229,7 @@ export default function ActivityFeed() {
                               value={title}
                               onChange={(e) => setTitle(e.target.value)}
                               placeholder='Why do you want to withdraw?'
-                              class='block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dfocus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
@@ -249,7 +249,7 @@ export default function ActivityFeed() {
                               placeholder='Add more information about your withdraw'
                               value={description}
                               onChange={(e) => setDescription(e.target.value)}
-                              class='block w-full px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
@@ -269,11 +269,11 @@ export default function ActivityFeed() {
                               placeholder='Amount in eth you like to withdraw'
                               value={amount}
                               onChange={(e) => setAmount(e.target.value)}
-                              class='block w-full px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
-                            <button class='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 rounded-full rounded-[100px]'>
+                            <button class=' px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black rhover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50  rounded-[100px] w-[360px]'>
                               Request withdrawal with eth
                             </button>
                           </div>
@@ -295,7 +295,7 @@ export default function ActivityFeed() {
                               value={title}
                               onChange={(e) => setTitle(e.target.value)}
                               placeholder='Why do you want to transfer?'
-                              class='block w-full px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md dfocus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 dfocus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
@@ -315,7 +315,7 @@ export default function ActivityFeed() {
                               placeholder='Add more information about your transfer'
                               value={description}
                               onChange={(e) => setDescription(e.target.value)}
-                              class='block w-full px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200   focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
@@ -335,11 +335,11 @@ export default function ActivityFeed() {
                               placeholder='0x...'
                               value={amount}
                               onChange={(e) => setAmount(e.target.value)}
-                              class='block w-full px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-md  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
+                              class='block px-4 py-2 mt-2 mb-5 text-gray-700 placeholder-gray-400 bg-white border border-gray-200  focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40 rounded-[100px] w-[360px]'
                             />
                           </div>
                           <div class='mt-6'>
-                            <button class='w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 rounded-full rounded-[100px]'>
+                            <button class=' px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-black hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50 rounded-[100px] w-[360px]'>
                               Request transfer with eth
                             </button>
                           </div>
