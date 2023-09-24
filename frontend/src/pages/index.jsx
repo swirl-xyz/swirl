@@ -99,7 +99,6 @@ export default function Home() {
             >
               Vote, empower and fund scientific discoveries
             </h1>
-            <button onClick={mintProject}>Create Project*******</button>
             <p className="mt-8 text-white">
               A novel approach to peer to peer scientific funding with direct
               democratic participation
