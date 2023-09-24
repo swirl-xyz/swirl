@@ -3,14 +3,18 @@ import { useWallets } from '@privy-io/react-auth';
 import { TokenboundClient } from '@tokenbound/sdk';
 import { EthersAdapter, SafeFactory } from '@safe-global/protocol-kit';
 
+import { Inter } from 'next/font/google';
 import ProjectSection from '../components/projectSection';
 import unlockClient from '../clients/unlock';
 import abi from '../../contracts/abis/ProjectAccount.json';
+import useWeb3Provider from '../hooks/useWeb3Provider';
 
-import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export default function Home() {
+  const { wallets } = useWallets();
+  const { web3Provider } = useWeb3Provider();
+
   // TO DO: add our own metadata
   const tokenURI = 'https://chocolate-objective-giraffe-337.mypinata.cloud/ipfs/Qmefgi96NSNCJFrUHWuPH67Y6kuk8KMayb9vZGgzVYLNtg?_gl=1*1isypq3*rs_ga*MTc4MjMzNjM0NC4xNjg0NTc2MTI4*rs_ga_5RMPXG14TE*MTY4NDU3NjEyOC4xLjEuMTY4NDU3NjE3MS4xNy4wLjA.';
   // const { wallets } = useWallets();
@@ -57,8 +61,24 @@ export default function Home() {
     console.log(`https://app.safe.global/gor:${safeAddress}`);
   };
 
+  const createLock = async () => {
+    const [userWallet] = wallets;
+
+    if (!userWallet) {
+      return;
+    }
+
+    const result = await unlockClient.createLock({
+      userWallet,
+    });
+  };
+
   return (
     <main className={`flex min-h-screen flex-col ${inter.className}`}>
+
+      {/* DEBUG */}
+      <button type="button" onClick={createLock}>Get lock</button>
+
       <section
         className="relative py-28 bg-white bg-center bg-cover"
         style={{ backgroundImage: "url('/hero.jpeg')" }}
