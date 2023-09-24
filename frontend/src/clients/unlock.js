@@ -55,6 +55,8 @@ class UnlockClient {
       const receipt = await transaction.wait();
       const lockAddress = receipt.logs[0].address;
 
+      localStorage.setItem(userWallet.address, lockAddress);
+
       return lockAddress;
     } catch (error) {
       console.error('Error: [Clients/Unlock]', error);
@@ -65,7 +67,9 @@ class UnlockClient {
 
   createKey() {}
 
-  getKeys() {}
+  getKeys() {
+
+  }
 }
 
 export default new UnlockClient();
