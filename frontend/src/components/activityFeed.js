@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useWallets } from '@privy-io/react-auth';
+
+const OWNER_ADDRESS = '0x43BD7C3aB2526956c31e18e42d2C12E22dED6E04';
 
 export default function ActivityFeed() {
+  const { wallets } = useWallets();
+
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
-  const [isDonor, setIsDonor] = useState(false);
+  const [isDonor, setIsDonor] = useState(wallets?.[0].address !== OWNER_ADDRESS);
   const [isWithdrawal, setIsWithdrawal] = useState(true);
   const [activeTab, setActiveTab] = useState('withdraw');
+
+  useEffect(() => {
+    setIsDonor(wallets?.[0].address !== OWNER_ADDRESS);
+    console.log(wallets);
+  }, [wallets]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
