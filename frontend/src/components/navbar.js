@@ -7,7 +7,7 @@ export default function Navbar() {
   } = usePrivy();
 
   return (
-    <div className="p-4 bg-white">
+    <div className="px-8 py-4 bg-white ">
       <div className="z-10 w-full items-center justify-between font-mono text-sm flex mx-auto">
         <Link href="/">
           <div className="flex items-center">
@@ -30,7 +30,13 @@ export default function Navbar() {
               <div className="w-[120px] h-11 px-4 py-[8px] rounded-[50px] border border-gray-900 justify-center items-center gap-2.5 inline-flex mr-8">
                 <Link href="/profile">Profile</Link>
               </div>
-              <button onClick={logout}>Logout</button>
+              <button
+                className="w-[120px] h-11 px-4 py-[8px]  bg-black text-white rounded-full px-4 py-2"
+                onClick={logout}
+              >
+                Logout
+
+              </button>
             </>
           ) : (
             <button
