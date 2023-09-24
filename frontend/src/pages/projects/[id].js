@@ -12,6 +12,10 @@ export default function Project() {
   const vote = (choice) => {
     const userWallet = wallets[0];
 
+    if (!userWallet) {
+      return;
+    }
+
     const choiceId = {
       yes: 1,
       no: 2,
@@ -23,6 +27,12 @@ export default function Project() {
       userWalletAddress: userWallet.address,
       proposalId: '0x6c2447dbd53ada4c31ced0391b883bf890e7eb355b2d9b274de5b1c715adef78',
       choiceId,
+    });
+  };
+
+  const createProposal = () => {
+    proposalsClient.create({
+
     });
   };
 
@@ -40,6 +50,7 @@ export default function Project() {
       <button type="button" onClick={() => vote('yes')}>Vote yes</button>
       <button type="button" onClick={() => vote('no')}>Vote No</button>
       <button type="button" onClick={() => vote('abstain')}>Abstain</button>
+      <button type="button" onClick={() => createProposal()}>Create Withdrawal Request</button>
     </main>
   );
 }

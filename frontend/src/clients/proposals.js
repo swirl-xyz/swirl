@@ -95,7 +95,9 @@ class ProposalsClient {
     return result;
   }
 
-  create() {}
+  create() {
+    console.log('create');
+  }
 
   async vote({
     web3Provider, userWalletAddress, proposalId, choiceId,
