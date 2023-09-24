@@ -1,5 +1,4 @@
 import { Inter } from 'next/font/google';
-import ProjectSection from '../components/projectSection';
 import { useWallets } from '@privy-io/react-auth';
 import ProjectSection from '../components/projectSection';
 import unlockClient from '../clients/unlock';
