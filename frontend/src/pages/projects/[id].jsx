@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { usePrivy, useWallets } from '@privy-io/react-auth';
 import { ethers } from 'ethers';
+import { Client } from '@xmtp/xmtp-js';
 import ActivityFeed from '@/components/activityFeed';
 import Modal from '@/components/modal';
 import abi from '../../../contracts/abis/KeyPurchaser.json';
+import XMPTClient from '../../clients/xmtp';
 
 export default function Project() {
   const {
@@ -16,6 +18,7 @@ export default function Project() {
   const handleCloseModal = () => setModalOpen(false);
   const [loading, setLoading] = useState(false);
   const [depositAmount, setDepositAmount] = useState(0.001);
+  const [userMsg, setUserMsg] = useState('');
 
   const handleDonate = async (e) => {
     e.preventDefault();
@@ -57,8 +60,25 @@ export default function Project() {
     // await tx2.wait();
   };
 
+  const handleMessage = async (e) => {
+    e.preventDefault();
+    const provider = await wallets[0]?.getEthersProvider();
+    const signer = await provider?.getSigner();
+
+    const xmtp = await Client.create(signer, { env: 'dev' });
+    const isOnProdNetwork = await xmtp.canMessage('0x6e62FF0591d4D8a0E5A1C274AbCFd2D716F1035E');
+    if (isOnProdNetwork) {
+      const conversation = await xmtp.conversations.newConversation('0x6e62FF0591d4D8a0E5A1C274AbCFd2D716F1035E');
+      const msg = await conversation.send(userMsg);
+      console.log('Message sent', msg);
+    } else {
+      console.log('User not available');
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col">
+
       <Modal isOpen={isModalOpen} onClose={handleCloseModal} loading={loading} />
       <section className="relative py-22 bg-white">
         <div className="mx-auto lg:max-w-7xl w-full px-5 sm:px-10 md:px-12 lg:px-5 flex flex-col lg:flex-row gap-10 lg:gap-12">
@@ -125,6 +145,38 @@ export default function Project() {
               collection tool that will be easily replicable by others as well
               as the collection of critical data that is of benefit to whales
               and ultimately humanity.
+            </div>
+            <br />
+
+            <p>Send a message to the researchers!</p>
+
+            <div className="flex sm:flex-row flex-col gap-5 w-50 mt-4">
+
+              <form
+                onSubmit={handleMessage}
+                action="#"
+                className="py-1 pl-6 w-50 pr-1 flex gap-3 items-center text-gray-600 shadow-lg shadow-gray-200/20 border border-gray-200 bg-gray-100 rounded-full ease-linear focus-within:bg-white focus-within:border-blue-600 z-5"
+              >
+                <input
+                  type="text"
+                  name="userMessage"
+                  id="userMessage"
+                  placeholder="Send a message"
+                  className="w-full py-3 outline-none bg-transparent z-50"
+                  value={userMsg}
+                  onChange={(e) => setUserMsg(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  disabled={!authenticated || isModalOpen}
+                  className="flex text-white justify-center items-center w-max min-w-max sm:w-max px-6 h-12 rounded-full outline-none relative overflow-hidden border duration-300 ease-linear after:absolute after:inset-x-0 after:aspect-square after:scale-0 after:opacity-70 after:origin-center after:duration-300 after:ease-linear after:rounded-full after:top-0 after:left-0 after:bg-[#172554] hover:after:opacity-100 hover:after:scale-[2.5] bg-blue-600 border-transparent hover:border-[#172554] disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  <span className="hidden sm:flex relative z-[5]">
+                    Send
+                  </span>
+                  <span className="flex sm:hidden relative z-[5]" />
+                </button>
+              </form>
             </div>
             <div className="mt-10  w-full flex max-w-md mx-auto lg:mx-0" />
           </div>
