@@ -2,6 +2,10 @@
 
 A novel approach to P2P funding for de-centralized science using ERC-6551.
 
+<img width="1174" height="624" alt="Screenshot 2025-08-24 at 7 35 33 PM" src="https://github.com/user-attachments/assets/71bb1779-3829-4f90-8436-a5cc9b81e440" />
+
+Watch the demo [here](https://ethglobal.com/showcase/swirl-78tgy)
+
 ## DESCRIPTION
 
 We leveraged ERC-6551 to introduce accountability between research groups and donors of research projects. Research groups use our app to create a shared Safe that holds the funds for their research project. When a Safe is created, an NFT is issued to represent ownership of it. Donors can send donations to the research group's safe, and research groups can transfer ownership of the Safe by sending their NFT to another entity.
